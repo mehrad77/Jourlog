@@ -97,6 +97,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`{
     allMarkdownRemark(
+      filter: { fields: { draft: { eq: false } } }
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 10000
     ) {
