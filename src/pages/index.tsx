@@ -9,6 +9,7 @@ import { media } from '../utils/media';
 import rgba from 'polished/lib/color/rgba';
 import darken from 'polished/lib/color/darken';
 import lighten from 'polished/lib/color/lighten';
+import Logo from '../components/Logo';
 
 const Homepage = styled.main`
   display: flex;
@@ -34,11 +35,12 @@ const GridRow: any = styled.div`
       ? `linear-gradient(
       -185deg,
       ${rgba(darken(0.1, props.theme.colors.primary), 0.7)}, 
-      ${rgba(lighten(0.1, props.theme.colors.grey.dark), 0.9)}), url(/assets/bg.png) no-repeat`
+      ${rgba(lighten(0.1, props.theme.colors.grey.dark), 0.9)}), url(/assets/bg.jpg) no-repeat`
       : null};
   background-size: cover;
   padding: 2rem 4rem;
   color: ${(props: any) => (props.background ? props.theme.colors.white : null)};
+  animation: background-silder 150s linear infinite;
   h1 {
     color: ${(props: any) => (props.background ? props.theme.colors.white : null)};
   }
@@ -47,6 +49,15 @@ const GridRow: any = styled.div`
   }
   @media ${media.phone} {
     padding: 2rem 1.5rem;
+  }
+
+  @keyframes background-silder {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
   }
 `;
 
@@ -66,12 +77,9 @@ export default class IndexPage extends React.Component<PageProps> {
           <Homepage>
             <GridRow background={true}>
               <HomepageContent center={true}>
-                <img src={config.siteLogo} />
-                <h1>
-                  Hi. I am <br />
-                  Majid Hajian
-                </h1>
-                <p>I write about JavaScript, Angular, Ember, React, Vue, GlimmerJs, NodeJs, Rails, Go, Gatsby and ...</p>
+                {/* <img src={config.siteLogo} /> */}
+                <Logo />
+                <p>I'm Mehrad Rousta and I write about Life, Web Development, Podcasts, Music, Language, Inde Culture and other stuff.</p>
                 <Link to="/contact">
                   <Button big={true}>
                     <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -92,12 +100,6 @@ export default class IndexPage extends React.Component<PageProps> {
             </GridRow>
             <GridRow>
               <HomepageContent>
-                <h2>About Me</h2>
-                <p>
-                  Though I am a results-driven front-end developer by day who have converted inactive designs to fully interactive,
-                  well-developed, accessible and standards-based user interfaces. I am completely enthusiast with a full stack environment
-                  and passionate about JavaScript world.
-                </p>
                 <hr />
                 <h2>Latest Blog</h2>
                 {edges.map(post => (
@@ -124,7 +126,7 @@ export default class IndexPage extends React.Component<PageProps> {
 }
 export const IndexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, filter: { fields: { draft: { eq: false } } }) {
       totalCount
       edges {
         node {
