@@ -9,6 +9,7 @@ import { media } from '../utils/media';
 import rgba from 'polished/lib/color/rgba';
 import darken from 'polished/lib/color/darken';
 import lighten from 'polished/lib/color/lighten';
+import Logo from '../components/Logo';
 
 const Homepage = styled.main`
   display: flex;
@@ -66,12 +67,9 @@ export default class IndexPage extends React.Component<PageProps> {
           <Homepage>
             <GridRow background={true}>
               <HomepageContent center={true}>
-                <img src={config.siteLogo} />
-                <h1>
-                  Hi. I am <br />
-                  Majid Hajian
-                </h1>
-                <p>I write about JavaScript, Angular, Ember, React, Vue, GlimmerJs, NodeJs, Rails, Go, Gatsby and ...</p>
+                {/* <img src={config.siteLogo} /> */}
+                <Logo />
+                <p>I'm Mehrad Rousta and I write about Life, Web Development, Podcasts, Music, Language, Inde Culture and other stuff.</p>
                 <Link to="/contact">
                   <Button big={true}>
                     <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -92,12 +90,7 @@ export default class IndexPage extends React.Component<PageProps> {
             </GridRow>
             <GridRow>
               <HomepageContent>
-                <h2>About Me</h2>
-                <p>
-                  Though I am a results-driven front-end developer by day who have converted inactive designs to fully interactive,
-                  well-developed, accessible and standards-based user interfaces. I am completely enthusiast with a full stack environment
-                  and passionate about JavaScript world.
-                </p>
+               
                 <hr />
                 <h2>Latest Blog</h2>
                 {edges.map(post => (
