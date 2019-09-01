@@ -35,11 +35,12 @@ const GridRow: any = styled.div`
       ? `linear-gradient(
       -185deg,
       ${rgba(darken(0.1, props.theme.colors.primary), 0.7)}, 
-      ${rgba(lighten(0.1, props.theme.colors.grey.dark), 0.9)}), url(/assets/bg.png) no-repeat`
+      ${rgba(lighten(0.1, props.theme.colors.grey.dark), 0.9)}), url(/assets/bg.jpg) no-repeat`
       : null};
   background-size: cover;
   padding: 2rem 4rem;
   color: ${(props: any) => (props.background ? props.theme.colors.white : null)};
+  animation: background-silder 150s linear infinite;
   h1 {
     color: ${(props: any) => (props.background ? props.theme.colors.white : null)};
   }
@@ -48,6 +49,15 @@ const GridRow: any = styled.div`
   }
   @media ${media.phone} {
     padding: 2rem 1.5rem;
+  }
+
+  @keyframes background-silder {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
   }
 `;
 
@@ -90,7 +100,6 @@ export default class IndexPage extends React.Component<PageProps> {
             </GridRow>
             <GridRow>
               <HomepageContent>
-               
                 <hr />
                 <h2>Latest Blog</h2>
                 {edges.map(post => (
@@ -117,7 +126,7 @@ export default class IndexPage extends React.Component<PageProps> {
 }
 export const IndexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, filter: { fields: { draft: { eq: false } } }) {
       totalCount
       edges {
         node {
