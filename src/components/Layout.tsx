@@ -100,7 +100,30 @@ export class Layout extends React.PureComponent<{}> {
             <React.Fragment>
               <GlobalStyle />
               {children}
-              <Footer>
+              <Footer className="footer">
+                <div className="earth">
+                  <div className="mapWrapper">
+                    <img src="http://codemenatalie.com/wp-content/uploads/2019/09/worldMapSimplified.svg" />
+                  </div>
+                  <div className="faceWrapper">
+                    <div className="eye left">
+                      <div className="whiteLeft" />
+                      <div className="whiteRight" />
+                    </div>
+                    <div className="eye right">
+                      <div className="whiteLeft" />
+                      <div className="whiteRight" />
+                    </div>
+                    <div className="blush left" />
+                    <div className="blush right" />
+                    <div className="mouth">
+                      <div className="tongue" />
+                    </div>
+                  </div>
+                  <div className="earthShadow" />
+                </div>
+                <div className="stars" />
+
                 <div className="item">
                   <ul>
                     <li>
