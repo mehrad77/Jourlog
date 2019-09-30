@@ -1,4 +1,5 @@
 // all scss if you like!
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
 //----------  responsive breakpoints
 //------------------------------------------------------------------------------
 @mixin breakpoint($value) {
@@ -37,3 +38,217 @@ $blue: #017ac7;
 // Transition
 $duration: 400ms;
 $easing: ease;
+
+ul {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  padding-top: 16px;
+  li {
+    float: left;
+    list-style: none;
+    margin-right: 8px;
+    // border: 2px solid;
+    padding: 4px;
+    z-index: 2;
+    font-size: 18px;
+  }
+}
+
+.footer {
+  z-index: 0;
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  font-size: 14px;
+  background-color: #1b2233;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s ease-in-out;
+  animation: universe 45s linear infinite;
+  overflow: hidden;
+  a,
+  span {
+    color: $white;
+  }
+
+  .earth {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-color: #69d1db;
+    overflow: hidden;
+    box-shadow: 0 0 200px #2b5970;
+    animation: earth 5s ease-in-out infinite;
+    z-index: 2;
+
+    .faceWrapper {
+      position: relative;
+      height: 100%;
+      animation: rotateEarth 10s ease-in-out infinite;
+
+      .eye {
+        position: absolute;
+        top: 110px;
+        border-radius: 50%;
+        background-color: #222;
+        width: 50px;
+        height: 50px;
+        z-index: 4;
+        overflow: hidden;
+        animation: eyeBlink 3s linear infinite;
+
+        &.left {
+          left: 80px;
+        }
+        &.right {
+          right: 80px;
+        }
+
+        .whiteLeft {
+          border-radius: 50%;
+          background-color: #fff;
+          width: 10px;
+          height: 10px;
+          transform: translate3d(22px, 9px, 0);
+        }
+
+        .whiteRight {
+          border-radius: 50%;
+          background-color: #fff;
+          width: 4px;
+          height: 4px;
+          transform: translate3d(35px, 0, 0);
+        }
+      }
+
+      .blush {
+        position: absolute;
+        top: 170px;
+        border-radius: 50%;
+        background-color: rgba(#f8c3c2, 0.75);
+        width: 18px;
+        height: 8px;
+        z-index: 4;
+
+        &.left {
+          left: 80px;
+        }
+        &.right {
+          right: 80px;
+        }
+      }
+
+      .mouth {
+        position: absolute;
+        background-color: #d13d40;
+        border-radius: 25px;
+        height: 20px;
+        width: 20px;
+        top: 200px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        overflow: hidden;
+
+        .tongue {
+          background-color: #f05455;
+          height: 20px;
+          width: 30px;
+          border-radius: 25px 25px 0 0;
+          transform: translate3d(0, 10px, 0);
+        }
+      }
+    }
+
+    .earthShadow {
+      position: absolute;
+      top: 0;
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.85) 100%);
+    }
+
+    .mapWrapper {
+      position: absolute;
+      top: -20px;
+      left: -45px;
+      height: 340px;
+      animation: rotateEarth 10s ease-in-out infinite;
+
+      img {
+        height: 100%;
+        max-width: 600px !important;
+      }
+    }
+  }
+
+  .stars {
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDI0MCAyNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0MCAyNDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxyZWN0IHg9IjEwNiIgeT0iOTAiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB4PSI3NCIgeT0iNjMiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIyMyIgeT0iNjYiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI1MCIgeT0iMTEwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iNjMiIHk9IjEyOCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjQ1IiB5PSIxNDkiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSI5MiIgeT0iMTUxIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iNTgiIHk9IjgiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxNDciIHk9IjMzIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIi8+PHJlY3QgeD0iOTEiIHk9IjQzIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTY5IiB5PSIyOSIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjE4MiIgeT0iMTkiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxNjEiIHk9IjU5IiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTM4IiB5PSI5NSIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjE5OSIgeT0iNzEiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiLz48cmVjdCB4PSIyMTMiIHk9IjE1MyIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjIiIGhlaWdodD0iMiIvPjxyZWN0IHg9IjEyOCIgeT0iMTYzIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMjA1IiB5PSIxNzQiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxNTIiIHk9IjIwMCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjxyZWN0IHg9IjUyIiB5PSIyMTEiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiLz48cmVjdCB5PSIxOTEiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIxMTAiIHk9IjE4NCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjEiIGhlaWdodD0iMSIvPjwvc3ZnPg==);
+    animation: spin 240s linear infinite;
+  }
+}
+
+@keyframes universe {
+  0%,
+  100% {
+    background-color: #1b2233;
+  }
+
+  50% {
+    background-color: #252f44;
+  }
+}
+@keyframes earth {
+  0%,
+  100% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes rotateEarth {
+  0%,
+  100% {
+    transform: translate3d(-45px, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes eyeBlink {
+  0%,
+  30%,
+  40%,
+  100% {
+    transform: scale(1);
+  }
+  33%,
+  37% {
+    transform: scale(1, 0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
