@@ -22,8 +22,8 @@ export const Button: any = styled.button`
     outline: none;
   }
   svg {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     margin-right: 0.75rem;
     fill: white;
   }
