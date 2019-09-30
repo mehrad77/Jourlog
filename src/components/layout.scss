@@ -37,3 +37,11 @@ $blue: #017ac7;
 // Transition
 $duration: 400ms;
 $easing: ease;
+
+li {
+  float: left;
+  list-style: none;
+  margin-right: 8px;
+  // border: 2px solid;
+  padding: 4px;
+}
