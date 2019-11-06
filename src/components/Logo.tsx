@@ -47,11 +47,11 @@ const StyledSVGLogo: any = styled.svg`
     }
     30% {
       fill: #163354;
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
     60% {
       fill: #122438;
-      transform: scale(1.01);
+      transform: scale(1.2);
     }
     90% {
       fill: #163354;
@@ -70,7 +70,7 @@ const Logo = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="800"
       height="160"
-      viewBox="-30 -30 750 200"
+      viewBox="-30 -30 750 300"
       shape-rendering="geometricPrecision"
       text-rendering="geometricPrecision"
       image-rendering="optimizeQuality"
