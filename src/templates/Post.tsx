@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
+import { DiscussionEmbed } from 'disqus-react';
 import { Layout, Wrapper, Header, Subline, SEO, PrevNext, SectionTitle, Content } from '../components';
 import config from '../../config/SiteConfig';
 import '../utils/prismjs-theme.css';
@@ -24,15 +25,25 @@ export default class PostPage extends React.PureComponent<Props> {
   public render() {
     const { prev, next } = this.props.pathContext;
     const post = this.props.data.markdownRemark;
+    const slug = post.fields.slug;
+    const title = post.frontmatter.title;
+    const disqusConfig = {
+      shortname: config.disqus_name,
+      config: {
+        title,
+        identifier: slug,
+        url: window.location.href,
+      },
+    };
     return (
       <Layout>
         {post ? (
           <>
-            <SEO postPath={post.fields.slug} postNode={post} postSEO />
-            <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
+            <SEO postPath={slug} postNode={post} postSEO />
+            <Helmet title={`${title} | ${config.siteTitle}`} />
             <Header banner={post.frontmatter.banner}>
               <Link to="/">{config.siteTitle}</Link>
-              <SectionTitle direction={post.frontmatter.dir}>{post.frontmatter.title}</SectionTitle>
+              <SectionTitle direction={post.frontmatter.dir}>{title}</SectionTitle>
               <Subline light={true}>
                 {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}
                 <Link to={`/categories/${kebabCase(post.frontmatter.category)}`}>{post.frontmatter.category}</Link>
@@ -52,6 +63,7 @@ export default class PostPage extends React.PureComponent<Props> {
                   </Subline>
                 ) : null}
                 <PrevNext prev={prev} next={next} />
+                <DiscussionEmbed {...disqusConfig} />
               </Content>
             </Wrapper>
           </>

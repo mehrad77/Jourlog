@@ -29,6 +29,7 @@ export default {
 
   // Social media
   siteFBAppID: '',
+  disqus_name: 'jourlog',
 
   //
   Google_Tag_Manager_ID: 'GTM-WX3HH87',
