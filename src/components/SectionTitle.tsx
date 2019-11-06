@@ -5,6 +5,7 @@ export const SectionTitle: any = styled.div`
   text-transform: ${(props: any) => (props.uppercase ? 'uppercase' : 'normal')};
   text-align: center;
   color: ${props => props.theme.colors.white};
+  direction: ${props => props.direction};
   position: relative;
   padding: 2rem 0 0;
   margin-bottom: 2rem;

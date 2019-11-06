@@ -71,6 +71,7 @@
     "typography": "^0.16.17"
   },
   "dependencies": {
+    "disqus-react": "^1.0.7",
     "gatsby-plugin-google-tagmanager": "^2.0.5"
   }
 }

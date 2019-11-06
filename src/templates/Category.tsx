@@ -23,12 +23,13 @@ export default class Category extends React.PureComponent<PageProps> {
           </Subline>
         </Header>
         <Wrapper>
-          <Content>
+          <Content dir={kebabCase(categoryName) === 'farsi-posts' ? 'rtl' : 'ltr'}>
             {posts
               ? posts.map((post: any, index) => (
                   <Article
                     title={post.frontmatter.title}
                     date={post.frontmatter.date}
+                    direction={post.frontmatter.dir}
                     excerpt={post.excerpt}
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
