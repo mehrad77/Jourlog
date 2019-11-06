@@ -32,14 +32,14 @@ export default class PostPage extends React.PureComponent<Props> {
             <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
             <Header banner={post.frontmatter.banner}>
               <Link to="/">{config.siteTitle}</Link>
-              <SectionTitle>{post.frontmatter.title}</SectionTitle>
+              <SectionTitle direction={post.frontmatter.dir}>{post.frontmatter.title}</SectionTitle>
               <Subline light={true}>
                 {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}
                 <Link to={`/categories/${kebabCase(post.frontmatter.category)}`}>{post.frontmatter.category}</Link>
               </Subline>
             </Header>
             <Wrapper>
-              <Content>
+              <Content direction={post.frontmatter.dir}>
                 <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
                 {post.frontmatter.tags ? (
                   <Subline>
@@ -73,6 +73,7 @@ export const postQuery = graphql`
         date(formatString: "DD.MM.YYYY")
         category
         tags
+        dir
         banner
       }
       timeToRead

@@ -11,10 +11,11 @@ const Post = styled.article`
   margin-bottom: 3.5rem;
 `;
 
-const Title = styled.h2`
+const Title = styled.h2<{ direction?: string }>`
   position: relative;
   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 0.75rem;
+  direction: ${({ direction }) => direction};
 `;
 
 const Initiale = styled.span`
@@ -37,18 +38,19 @@ interface Props {
   date: string;
   excerpt: string;
   slug: string;
+  direction?: string;
   timeToRead: number;
   category: string;
 }
 
 export class Article extends React.PureComponent<Props> {
   public render() {
-    const { title, date, excerpt, slug, timeToRead, category } = this.props;
+    const { title, date, excerpt, slug, timeToRead, category, direction } = this.props;
     const firstChar = title.charAt(0);
 
     return (
       <Post>
-        <Title>
+        <Title direction={direction}>
           <Initiale>{firstChar}</Initiale>
           <Link to={`/blog/${slug}`}>{title}</Link>
         </Title>

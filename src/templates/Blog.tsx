@@ -65,6 +65,7 @@ export const BlogQuery = graphql`
             title
             date(formatString: "DD.MM.YYYY")
             category
+            dir
           }
           excerpt(pruneLength: 200)
           timeToRead

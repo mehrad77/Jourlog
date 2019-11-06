@@ -122,6 +122,7 @@ export default class IndexPage extends React.Component<PageProps> {
                   <Article
                     title={post.node.frontmatter.title}
                     date={post.node.frontmatter.date}
+                    direction={post.node.frontmatter.dir}
                     excerpt={post.node.excerpt}
                     timeToRead={post.node.timeToRead}
                     slug={post.node.fields.slug}
@@ -130,7 +131,8 @@ export default class IndexPage extends React.Component<PageProps> {
                   />
                 ))}
                 <p className={'textRight'}>
-                  <Link to={'/blog'}>All articles ({totalCount})</Link>
+                  <Link to={'/blog'}>All articles ({totalCount})</Link> <br />
+                  <Link to={'/categories/english-posts'}>English</Link> - <Link to={'/categories/farsi-posts'}>Farsi</Link>
                 </p>
               </HomepageContent>
             </GridRow>
@@ -142,7 +144,7 @@ export default class IndexPage extends React.Component<PageProps> {
 }
 export const IndexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, filter: { fields: { draft: { eq: false } } }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 2, filter: { fields: { draft: { eq: false } } }) {
       totalCount
       edges {
         node {
@@ -153,6 +155,7 @@ export const IndexQuery = graphql`
             title
             date(formatString: "DD.MM.YYYY")
             category
+            dir
           }
           timeToRead
         }
