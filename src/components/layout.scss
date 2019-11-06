@@ -38,20 +38,28 @@ $blue: #017ac7;
 // Transition
 $duration: 400ms;
 $easing: ease;
-
 ul {
   display: flex;
-  flex-flow: wrap;
+  // flex-flow: wrap;
+  flex-flow: column;
   justify-content: center;
   padding-top: 16px;
   li {
     float: left;
-    list-style: none;
+    // list-style: none;
     margin-right: 8px;
     // border: 2px solid;
     padding: 4px;
     z-index: 2;
     font-size: 18px;
+  }
+}
+
+footer ul {
+  flex-flow: wrap;
+  list-style: none;
+  li {
+    list-style: none;
   }
 }
 
