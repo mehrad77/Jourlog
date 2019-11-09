@@ -27,12 +27,16 @@ export default class PostPage extends React.PureComponent<Props> {
     const post = this.props.data.markdownRemark;
     const slug = post.fields.slug;
     const title = post.frontmatter.title;
+    let url = '';
+    if (typeof window !== `undefined`) {
+      url = window.location.href;
+    }
     const disqusConfig = {
       shortname: config.disqus_name,
       config: {
         title,
+        url,
         identifier: slug,
-        url: window.location.href,
       },
     };
     return (
