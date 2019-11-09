@@ -103,7 +103,7 @@ export class Layout extends React.PureComponent<{}> {
               <Footer className="footer">
                 <div className="earth">
                   <div className="mapWrapper">
-                    <img src="http://codemenatalie.com/wp-content/uploads/2019/09/worldMapSimplified.svg" />
+                    <img src="/assets/worldMapSimplified.svg" />
                   </div>
                   <div className="faceWrapper">
                     <div className="eye left">
