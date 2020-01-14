@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { Subline } from './Subline';
@@ -10,10 +9,6 @@ import { Subline } from './Subline';
 //   user-select: none;
 //   z-index: -1;
 // `;
-
-const Excerpt = styled.p`
-  grid-column: -1 / 1;
-`;
 
 interface IArticle {
   title: string;
@@ -38,7 +33,7 @@ export const Article: FC<IArticle> = ({ title, date, excerpt, slug, timeToRead, 
         {date} &mdash; {timeToRead} Min Read &mdash; In
         <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
       </Subline>
-      <Excerpt className="my-4">{excerpt}</Excerpt>
+      <p className="my-4">{excerpt}</p>
     </article>
   );
 };
