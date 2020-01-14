@@ -112,6 +112,7 @@ exports.createPages = ({ actions, graphql }) => {
               dir
               tags
               banner
+              excerpt
             }
             timeToRead
           }

@@ -30,7 +30,7 @@ export default class Category extends React.PureComponent<PageProps> {
                     title={post.frontmatter.title}
                     date={post.frontmatter.date}
                     direction={post.frontmatter.dir}
-                    excerpt={post.excerpt}
+                    excerpt={post.node.frontmatter.excerpt ? post.node.frontmatter.excerpt : post.node.excerpt}
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
                     category={post.frontmatter.category}

@@ -29,7 +29,7 @@ export default class TagTemplate extends React.PureComponent<PageProps> {
                   <Article
                     title={post.frontmatter.title}
                     date={post.frontmatter.date}
-                    excerpt={post.excerpt}
+                    excerpt={post.node.frontmatter.excerpt ? post.node.frontmatter.excategorycerpt : post.node.excerpt}
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
                     category={post.frontmatter.category}
