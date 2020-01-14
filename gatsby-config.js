@@ -58,12 +58,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography.ts',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
@@ -76,5 +70,5 @@ module.exports = {
         icon: config.favicon,
       },
     },
-  ]
+  ],
 };
