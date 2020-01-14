@@ -43,8 +43,8 @@
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-remark": "^2.1.7",
     "gh-pages": "^2.0.1",
-    "husky": "^1.1.2",
-    "lint-staged": "^7.3.0",
+    "husky": "^4.0.7",
+    "lint-staged": "^9.5.0",
     "lodash": "^4.17.11",
     "node-sass": "^4.9.4",
     "polished": "^2.2.0",
@@ -73,5 +73,17 @@
   "dependencies": {
     "disqus-react": "^1.0.7",
     "gatsby-plugin-google-tagmanager": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(js|ts|tsx)": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ]
   }
 }
