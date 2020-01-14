@@ -49,7 +49,7 @@ export class Article extends React.PureComponent<Props> {
     const firstChar = title.charAt(0);
 
     return (
-      <Post>
+      <article>
         <Title direction={direction}>
           <Initiale>{firstChar}</Initiale>
           <Link to={`/blog/${slug}`}>{title}</Link>
@@ -59,7 +59,7 @@ export class Article extends React.PureComponent<Props> {
           <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
         </Subline>
         <Excerpt>{excerpt}</Excerpt>
-      </Post>
+      </article>
     );
   }
 }

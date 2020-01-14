@@ -21,6 +21,7 @@ module.exports = {
     'gatsby-plugin-draft',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sass',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-manifest',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',

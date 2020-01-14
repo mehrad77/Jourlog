@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+
+a {
+  @apply text-gray-900;
+  transition: color 200ms;
+}
+a:hover {
+  @apply text-blue-500;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply text-gray-900;
+}
+
+blockquote {
+  @apply italic relative;
+}
+
+blockquote:before {
+  @apply absolute h-full -ml-6;
+  content: '';
+  background: #72cc96;
+  width: 6px;
+}
+
+label {
+  @apply text-gray-900 mb-2;
+}
+input,
+textarea {
+  border-radius: 0.5rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.25rem 1rem;
+}
+textarea:focus {
+  outline: none;
+}
+
+.textRight {
+  text-align: right;
+}
+
+@tailwind utilities;
