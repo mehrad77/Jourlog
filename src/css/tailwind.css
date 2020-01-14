@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 
+/* general styles */
 html,
 body {
   @apply font-body;
@@ -48,6 +49,34 @@ textarea:focus {
 
 .textRight {
   text-align: right;
+}
+
+/* == Buttons == */
+
+.btn {
+  @apply relative inline-block text-base py-4 px-8 m-4 shadow rounded-sm cursor-pointer;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+}
+
+.btn:focus {
+  @apply outline-none shadow-outline;
+}
+
+.btn:hover {
+  @apply shadow-xl;
+}
+
+.btn:active {
+  @apply shadow-none;
+  transform: scale(0.95);
+}
+
+/* Primary */
+.btn-primary {
+  @apply bg-primary-500 text-black font-medium font-sans;
+}
+.btn-primary:hover {
+  @apply bg-primary-600;
 }
 
 @tailwind utilities;
