@@ -1,65 +1,44 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import { Subline } from './Subline';
 
-const Post = styled.article`
-  display: flex;
-  flex-direction: column;
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
-`;
-
-const Title = styled.h2<{ direction?: string }>`
-  position: relative;
-  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  margin-bottom: 0.75rem;
-  direction: ${({ direction }) => direction};
-`;
-
-const Initiale = styled.span`
-  position: absolute;
-  font-size: 7rem;
-  transform: translate(-50%, -50%);
-  opacity: 0.08;
-  user-select: none;
-  z-index: -1;
-`;
+// const Initiale = styled.span`
+//   transform: translate(-50%, -50%);
+//   opacity: 0.08;
+//   user-select: none;
+//   z-index: -1;
+// `;
 
 const Excerpt = styled.p`
   grid-column: -1 / 1;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 `;
 
-interface Props {
+interface IArticle {
   title: string;
   date: string;
   excerpt: string;
   slug: string;
-  direction?: string;
+  direction?: 'rtl' | 'ltr';
   timeToRead: number;
   category: string;
 }
 
-export class Article extends React.PureComponent<Props> {
-  public render() {
-    const { title, date, excerpt, slug, timeToRead, category, direction } = this.props;
-    const firstChar = title.charAt(0);
+export const Article: FC<IArticle> = ({ title, date, excerpt, slug, timeToRead, category, direction }) => {
+  // const firstChar = title.charAt(0);
 
-    return (
-      <article>
-        <Title direction={direction}>
-          <Initiale>{firstChar}</Initiale>
-          <Link to={`/blog/${slug}`}>{title}</Link>
-        </Title>
-        <Subline>
-          {date} &mdash; {timeToRead} Min Read &mdash; In
-          <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
-        </Subline>
-        <Excerpt>{excerpt}</Excerpt>
-      </article>
-    );
-  }
-}
+  return (
+    <article className="flex flex-col my-12 text-center" style={direction ? { direction } : {}} dir={direction}>
+      <h2 className="mb-3 text-lg font-semibold rtl:text-right ltr:text-left">
+        {/* <Initiale className="absolute text-6xl">{firstChar}</Initiale> */}
+        <Link to={`/blog/${slug}`}>{title}</Link>
+      </h2>
+      <Subline>
+        {date} &mdash; {timeToRead} Min Read &mdash; In
+        <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
+      </Subline>
+      <Excerpt className="my-4">{excerpt}</Excerpt>
+    </article>
+  );
+};

@@ -38,6 +38,7 @@ export default class BlogPage extends React.Component<Props> {
                 slug={post.node.fields.slug}
                 category={post.node.frontmatter.category}
                 key={post.node.fields.slug}
+                direction={post.node.frontmatter.dir}
               />
             ))}
             <Pagination currentPage={currentPage} totalPages={totalPages} url={'blog'} />

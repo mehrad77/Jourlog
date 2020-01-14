@@ -71,5 +71,14 @@ module.exports = {
         icon: config.favicon,
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Shabnam'],
+          urls: ['/fonts/fonts.css'],
+        },
+      },
+    },
   ],
 };

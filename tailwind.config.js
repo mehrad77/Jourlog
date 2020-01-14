@@ -1,7 +1,11 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ['Shabnam'],
+      },
+    },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('tailwindcss-dir')()],
 };

@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 
+html,
+body {
+  @apply font-body;
+}
+
 a {
   @apply text-gray-900;
   transition: color 200ms;
