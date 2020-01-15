@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 interface IContent {
-  direction: 'rtl' | 'ltr';
+  direction?: 'rtl' | 'ltr';
 }
 
 // const StyledDiv = styled.div`

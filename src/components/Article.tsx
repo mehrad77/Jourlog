@@ -29,7 +29,7 @@ export const Article: FC<IArticle> = ({ title, date, excerpt, slug, timeToRead, 
         {/* <Initiale className="absolute text-6xl">{firstChar}</Initiale> */}
         <Link to={`/blog/${slug}`}>{title}</Link>
       </h2>
-      <Subline>
+      <Subline color="black">
         {date} &mdash; {timeToRead} Min Read &mdash; In
         <Link to={`/categories/${kebabCase(category)}`}> {category}</Link>
       </Subline>
