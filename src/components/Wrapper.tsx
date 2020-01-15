@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 interface IWrapper {
-  fullWidth: boolean;
+  fullWidth?: boolean;
 }
 
 const Wrapper: FC<IWrapper> = ({ children, fullWidth }) => {
