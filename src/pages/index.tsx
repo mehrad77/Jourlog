@@ -6,24 +6,7 @@ import PageProps from '../models/PageProps';
 import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
 import { media } from '../utils/media';
-import rgba from 'polished/lib/color/rgba';
-import darken from 'polished/lib/color/darken';
-import lighten from 'polished/lib/color/lighten';
 import Logo from '../components/Logo';
-
-const Homepage = styled.main`
-  display: flex;
-  height: 100vh;
-  flex-direction: row;
-  @media ${media.tablet} {
-    height: 100%;
-    flex-direction: column;
-  }
-  @media ${media.phone} {
-    height: 100%;
-    flex-direction: column;
-  }
-`;
 
 const GridRow: any = styled.div`
   flex: 1;
@@ -69,7 +52,7 @@ export default class IndexPage extends React.Component<PageProps> {
       <Layout>
         <Wrapper fullWidth={true}>
           <Helmet title={`Homepage | ${config.siteTitle}`} />
-          <Homepage>
+          <div className="flex h-full flex-col lg:flex-row">
             <GridRow background={true}>
               <HomepageContent center={true}>
                 {/* <img src={config.siteLogo} /> */}
@@ -85,8 +68,8 @@ export default class IndexPage extends React.Component<PageProps> {
             </GridRow>
             <GridRow>
               <HomepageContent>
+                <h2 className="text-3xl text-foreText-heading text-center">Latest Blog</h2>
                 <hr />
-                <h2>Latest Blog</h2>
                 {edges.map(post => (
                   <Article
                     title={post.node.frontmatter.title}
@@ -99,13 +82,18 @@ export default class IndexPage extends React.Component<PageProps> {
                     key={post.node.fields.slug}
                   />
                 ))}
-                <p className={'textRight'}>
-                  <Link to={'/blog'}>All articles ({totalCount})</Link> <br />
-                  <Link to={'/categories/english-posts'}>English</Link> - <Link to={'/categories/farsi-posts'}>Farsi</Link>
-                </p>
+                <div className="flex flex-row justify-center">
+                  <Link className="text-sm" to={'/categories/english-posts'}>
+                    <Button>English Posts</Button>
+                  </Link>{' '}
+                  <br />
+                  <Link className="text-sm" to={'/categories/farsi-posts'}>
+                    <Button>نوشته‌های فارسی</Button>
+                  </Link>
+                </div>
               </HomepageContent>
             </GridRow>
-          </Homepage>
+          </div>
         </Wrapper>
       </Layout>
     );
