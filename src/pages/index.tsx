@@ -47,10 +47,10 @@ const HomepageContent: any = styled.div`
 export default class IndexPage extends React.Component<PageProps> {
   public render() {
     const { data } = this.props;
-    const { edges, totalCount } = data.allMarkdownRemark;
+    const { edges } = data.allMarkdownRemark;
     return (
       <Layout>
-        <Wrapper fullWidth={true}>
+        <Wrapper fullWidth>
           <Helmet title={`Homepage | ${config.siteTitle}`} />
           <div className="flex h-full flex-col lg:flex-row">
             <GridRow background={true}>

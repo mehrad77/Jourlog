@@ -1,16 +1,11 @@
-import styled from 'styled-components';
-import { media } from '../utils/media';
+import React, { FC } from 'react';
 
-export const Wrapper: any = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: ${(props: any) => (props.fullWidth ? '100%' : '100rem')};
-  padding: ${(props: any) => (props.fullWidth ? '0' : '0 6rem')};
-  @media ${media.tablet} {
-    padding: ${(props: any) => (props.fullWidth ? '0' : '0 3rem')};
-  }
-  @media ${media.phone} {
-    padding: ${(props: any) => (props.fullWidth ? '0' : '0 1rem')};
-  }
-`;
+interface IWrapper {
+  fullWidth: boolean;
+}
+
+const Wrapper: FC<IWrapper> = ({ children, fullWidth }) => {
+  return <div className={`flex flex-col my-0 mx-auto max ${fullWidth ? 'w-full p-0' : 'w-screen px-4 md:px-12 lg:px-24'}`}>{children}</div>;
+};
+
+export { Wrapper };
