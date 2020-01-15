@@ -4,6 +4,10 @@ module.exports = {
       fontFamily: {
         body: ['Shabnam'],
       },
+      borderRadius: {
+        xl: '1rem',
+      },
+      boxShadow: { custom: '0 4px 120px rgba(0, 0, 0, 0.1)' },
       colors: {
         backWhite: {
           pure: '#fffffe',
