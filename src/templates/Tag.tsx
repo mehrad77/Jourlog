@@ -18,7 +18,7 @@ export default class TagTemplate extends React.PureComponent<PageProps> {
         <Header>
           <Link to="/">{config.siteTitle}</Link>
           <SectionTitle>Tag &ndash; {tagName}</SectionTitle>
-          <Subline sectionTitle light={true}>
+          <Subline>
             {subline} (See <Link to="/tags">all tags</Link>)
           </Subline>
         </Header>
@@ -29,7 +29,7 @@ export default class TagTemplate extends React.PureComponent<PageProps> {
                   <Article
                     title={post.frontmatter.title}
                     date={post.frontmatter.date}
-                    excerpt={post.excerpt}
+                    excerpt={post.frontmatter.excerpt ? post.frontmatter.excategorycerpt : post.node.excerpt}
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
                     category={post.frontmatter.category}

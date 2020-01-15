@@ -21,6 +21,7 @@ module.exports = {
     'gatsby-plugin-draft',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sass',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-manifest',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
@@ -58,12 +59,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography.ts',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteTitle,
@@ -76,5 +71,14 @@ module.exports = {
         icon: config.favicon,
       },
     },
-  ]
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Shabnam'],
+          urls: ['/fonts/fonts.css'],
+        },
+      },
+    },
+  ],
 };

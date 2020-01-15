@@ -1,17 +1,16 @@
 /* eslint-disable react/require-default-props */
-import React from 'react';
+import React, { FC } from 'react';
 import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
 import Post from '../models/Post';
 
-interface SEO {
+interface ISEO {
   postNode: Post;
   postPath: string;
   postSEO: boolean;
 }
 
-export const SEO = (props: SEO) => {
-  const { postNode, postPath, postSEO } = props;
+const SEO: FC<ISEO> = ({ postNode, postPath, postSEO }) => {
   let title;
   let description;
   let image;
@@ -103,3 +102,5 @@ export const SEO = (props: SEO) => {
     </Helmet>
   );
 };
+
+export { SEO };

@@ -22,11 +22,6 @@ export default {
   themeColor: '#3498DB',
   backgroundColor: '#2b2e3c',
 
-  // Settings for typography.ts
-  headerFontFamily: 'Bitter',
-  bodyFontFamily: 'Open Sans',
-  baseFontSize: '18px',
-
   // Social media
   siteFBAppID: '',
   disqus_name: 'jourlog',

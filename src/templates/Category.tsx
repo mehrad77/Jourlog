@@ -18,19 +18,19 @@ export default class Category extends React.PureComponent<PageProps> {
         <Header>
           <Link to="/">{config.siteTitle}</Link>
           <SectionTitle>Category &ndash; {categoryName}</SectionTitle>
-          <Subline sectionTitle light={true}>
+          <Subline>
             {subline} (See <Link to="/categories">all categories</Link>)
           </Subline>
         </Header>
         <Wrapper>
-          <Content dir={kebabCase(categoryName) === 'farsi-posts' ? 'rtl' : 'ltr'}>
+          <Content direction={kebabCase(categoryName) === 'farsi-posts' ? 'rtl' : 'ltr'}>
             {posts
               ? posts.map((post: any, index) => (
                   <Article
                     title={post.frontmatter.title}
                     date={post.frontmatter.date}
                     direction={post.frontmatter.dir}
-                    excerpt={post.excerpt}
+                    excerpt={post.frontmatter.excerpt ? post.frontmatter.excerpt : post.excerpt}
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
                     category={post.frontmatter.category}

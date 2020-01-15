@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import React, { FC } from 'react';
 
-export const Title = styled.h3`
-  position: relative;
-  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  margin-bottom: 0.75rem;
-`;
+const Title: FC = ({ children }) => {
+  return <h3 className="relative mb-3">{children}</h3>;
+};
+
+export { Title };

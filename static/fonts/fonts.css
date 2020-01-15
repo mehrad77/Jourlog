@@ -1,0 +1,7 @@
+/* latin */
+@font-face {
+  font-family: 'Shabnam';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Shabnam'), url('Shabnam.woff2') format('woff2');
+}

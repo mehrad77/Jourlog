@@ -1,34 +1,31 @@
-import styled from 'styled-components';
-import { media } from '../utils/media';
+import React, { FC } from 'react';
+interface IContent {
+  direction?: 'rtl' | 'ltr';
+}
 
-export const Content = styled.div<{ direction?: string }>`
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  padding: 2rem 4rem;
-  direction: ${props => props.direction};
-  background-color: ${props => props.theme.colors.bg};
-  z-index: 9000;
-  margin-top: -4rem;
-  form {
-    p {
-      label,
-      input {
-        display: block;
-      }
-      input {
-        min-width: 275px;
-      }
-      textarea {
-        resize: vertical;
-        min-height: 150px;
-        width: 100%;
-      }
-    }
-  }
-  @media ${media.tablet} {
-    padding: 3rem 3rem;
-  }
-  @media ${media.phone} {
-    padding: 2rem 1.5rem;
-  }
-`;
+// const StyledDiv = styled.div`
+//   form {
+//     p {
+//       label,
+//       input {
+//         display: block;
+//       }
+//       input {
+//         min-width: 275px;
+//       }
+//       textarea {
+//         resize: vertical;
+//         min-height: 150px;
+//         width: 100%;
+//       }
+//     }
+//   }
+// `;
+
+export const Content: FC<IContent> = ({ children, direction = 'ltr' }) => {
+  return (
+    <div className="bg-backWhite-pure py-8 px-6 md:px-12 lg:px-32 -mt-16 shadow-custom rounded-xl z-50" style={{ direction }}>
+      {children}
+    </div>
+  );
+};

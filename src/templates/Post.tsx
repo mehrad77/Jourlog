@@ -48,7 +48,7 @@ export default class PostPage extends React.PureComponent<Props> {
             <Header banner={post.frontmatter.banner}>
               <Link to="/">{config.siteTitle}</Link>
               <SectionTitle direction={post.frontmatter.dir}>{title}</SectionTitle>
-              <Subline light={true}>
+              <Subline>
                 {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}
                 <Link to={`/categories/${kebabCase(post.frontmatter.category)}`}>{post.frontmatter.category}</Link>
               </Subline>
@@ -57,14 +57,14 @@ export default class PostPage extends React.PureComponent<Props> {
               <Content direction={post.frontmatter.dir}>
                 <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
                 {post.frontmatter.tags ? (
-                  <Subline>
+                  <div>
                     Tags: &#160;
                     {post.frontmatter.tags.map((tag, i) => (
                       <Link key={i} to={`/tags/${kebabCase(tag)}`}>
                         <strong>{tag}</strong> {i < post.frontmatter.tags.length - 1 ? `, ` : ``}
                       </Link>
                     ))}
-                  </Subline>
+                  </div>
                 ) : null}
                 <PrevNext prev={prev} next={next} />
                 <DiscussionEmbed {...disqusConfig} />
