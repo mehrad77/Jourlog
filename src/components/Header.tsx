@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import config from '../../config/SiteConfig';
 
-const HeaderWrapper: FC = styled.header`
+const HeaderWrapper = styled.header<{ banner: string }>`
   background: linear-gradient(-185deg, rgba(23, 23, 23, 0.6), rgba(104, 104, 104, 0.8)), url(${(props: any) => props.banner}) no-repeat;
   background-size: cover;
   ::after {

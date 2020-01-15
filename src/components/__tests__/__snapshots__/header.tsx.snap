@@ -3,10 +3,10 @@
 exports[`renders 1`] = `
 <DocumentFragment>
   <header
-    class="sc-AykKH IDwBe"
+    class="sc-AykKC kGliGO bg-cover text-center relative pt-16 pb-24 lg:max-w-8xl lg:mx-auto"
   >
     <div
-      class="sc-AykKI brJYIB"
+      class="Content"
     >
       Header
     </div>
