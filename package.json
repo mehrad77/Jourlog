@@ -38,6 +38,7 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.13.0",
+    "postcss-nested": "^4.2.1",
     "prettier": "^1.19.1",
     "tailwindcss": "^1.2.0-canary.5",
     "tailwindcss-dir": "^4.0.0",

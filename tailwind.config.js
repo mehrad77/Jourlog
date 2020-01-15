@@ -7,6 +7,9 @@ module.exports = {
       borderRadius: {
         xl: '1rem',
       },
+      maxWidth: {
+        '8xl': '94rem',
+      },
       boxShadow: { custom: '0 4px 120px rgba(0, 0, 0, 0.1)' },
       colors: {
         backWhite: {

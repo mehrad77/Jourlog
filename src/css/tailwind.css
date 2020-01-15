@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 
-/* general styles */
+/* == == == general styles == == ==  */
 html,
 body {
   @apply font-body;
@@ -51,7 +51,7 @@ textarea:focus {
   text-align: right;
 }
 
-/* == Buttons == */
+/* == == == Buttons == == == */
 
 .btn {
   @apply relative inline-block text-base py-4 px-8 m-4 shadow rounded-sm cursor-pointer;
@@ -77,6 +77,18 @@ textarea:focus {
 }
 .btn-primary:hover {
   @apply bg-primary-600;
+}
+
+/* == == == Design Component == == == */
+
+.Content {
+  @apply relative z-50;
+  a {
+    @apply text-backWhite-pure;
+    &:hover {
+      @apply text-backWhite-opaque opacity-75;
+    }
+  }
 }
 
 @tailwind utilities;
