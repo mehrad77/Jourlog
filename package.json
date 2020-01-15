@@ -15,6 +15,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "test": "jest",
     "test:watch": "jest --watch",
+    "typecheck": "tsc",
     "lint": "tslint --project .",
     "lint:fix": "tslint --fix --project .",
     "fix": "prettier --write 'src/**/*.{ts,tsx,scss,md}' && tslint --fix 'src/**/*.{ts,tsx}' -p tsconfig.json && stylelint --fix 'src/**/*.scss' "
@@ -89,7 +90,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run typecheck && lint-staged"
     }
   },
   "lint-staged": {
