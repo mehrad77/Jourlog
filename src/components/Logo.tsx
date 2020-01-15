@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 
-const StyledSVGLogo: any = styled.svg`
+const getRandomColorPalette = (): string[] => {
+  const colors = [
+    ['#752e22', '#8e3829', '#984a3c'],
+    ['#69102d', '#801336', '#c72c41'],
+    ['#9b7519', '#d5a021', '#dcb149'],
+    ['#bc9572', '#e5b58b', '#e9c2a0'],
+    ['#c4cbaa', '#eff7cf', '#f0f7d3'],
+    ['#a18136', '#dcb149', '#e5c67a'],
+    ['#83873c', '#999d46', '#afb351'],
+    ['#516627', '#6f8c35', '#89a059'],
+    ['#5b7953', '#67885e', '#729668'],
+    ['#285238', '#138a36', '#289448'],
+    ['#053225', '#1b4438', '#32574c'],
+    ['#016683', '#01baef', '#18c0f0'],
+    ['#0d3f60', '#0f4c75', '#245c81'],
+    ['#444165', '#716da9', '#938fc5'],
+    ['#53397c', '#654597', '#7355a0'],
+    ['#2c0e37', '#3f2349', '#52395b'],
+    ['#455358', '#506167', '#5b6f76'],
+    ['#13151f', '#161925', '#2b2d38'],
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const StyledSVGLogo = styled.svg<{ randomColorPalette: string[] }>`
   width: 100%;
   path {
-    animation: loading-spinner 5s linear infinite;
+    animation: loading-spinner 5s cubic-bezier(0.79, 0.14, 0.15, 0.86) infinite;
     transform-origin: center;
     &.svgJDot {
       transform-origin: center;
@@ -12,15 +36,15 @@ const StyledSVGLogo: any = styled.svg`
     }
     &.svgJ {
       transform-origin: center;
-      animation-delay: -0.4s;
+      animation-delay: -3.4s;
     }
     &.svgO {
       transform-origin: center;
-      animation-delay: -0.6s;
+      animation-delay: -2.6s;
     }
     &.svgU {
       transform-origin: center;
-      animation-delay: -0.1s;
+      animation-delay: -9.1s;
     }
     &.svgR {
       transform-origin: center;
@@ -28,43 +52,47 @@ const StyledSVGLogo: any = styled.svg`
     }
     &.svgL {
       transform-origin: center;
-      animation-delay: -0.9s;
+      animation-delay: -5.9s;
     }
     &.svgO2 {
       transform-origin: center;
-      animation-delay: -0.3s;
+      animation-delay: -4.3s;
     }
     &.svgG {
       transform-origin: center;
-      animation-delay: -0.8s;
+      animation-delay: -2.8s;
     }
   }
 
   @keyframes loading-spinner {
     0% {
       transform: scale(1);
-      fill: #122438;
+      fill: ${props => props.randomColorPalette[0]};
     }
     30% {
-      fill: #163354;
+      fill: ${props => props.randomColorPalette[1]};
       transform: scale(1.05);
     }
     60% {
-      fill: #122438;
-      transform: scale(1.2);
+      fill: ${props => props.randomColorPalette[1]};
+      transform: scale(1.1);
     }
     90% {
-      fill: #163354;
+      fill: ${props => props.randomColorPalette[2]};
       transform: scale(1.02);
     }
     100% {
-      fill: #122438;
+      fill: ${props => props.randomColorPalette[0]};
       transform: scale(1);
     }
   }
 `;
 
-const Logo = () => {
+const Logo: FC = () => {
+  const [randomColorPalette, setRandomColorPalette] = useState(getRandomColorPalette());
+  const clickHandler = () => {
+    setRandomColorPalette(getRandomColorPalette());
+  };
   return (
     <StyledSVGLogo
       xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +104,8 @@ const Logo = () => {
       image-rendering="optimizeQuality"
       fill-rule="evenodd"
       clip-rule="evenodd"
+      randomColorPalette={randomColorPalette}
+      onClick={clickHandler}
     >
       <g id="Layer_x0020_1">
         <path

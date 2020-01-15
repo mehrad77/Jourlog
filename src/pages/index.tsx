@@ -31,12 +31,7 @@ const GridRow: any = styled.div`
   justify-content: center;
   align-items: center;
   background: ${(props: any) =>
-    props.background
-      ? `linear-gradient(
-      -185deg,
-      ${rgba(darken(0.1, props.theme.colors.primary), 0.7)}, 
-      ${rgba(lighten(0.1, props.theme.colors.grey.dark), 0.9)}), url(/assets/bg.jpg) no-repeat`
-      : null};
+    props.background ? `linear-gradient( -185deg, #1818184d, rgba(26,26,26,0.9)),url(/assets/bg.jpg) no-repeat` : null};
   background-size: cover;
   padding: 2rem 4rem;
   color: ${(props: any) => (props.background ? props.theme.colors.white : null)};
