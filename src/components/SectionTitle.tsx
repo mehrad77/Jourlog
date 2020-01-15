@@ -1,22 +1,16 @@
-import styled from 'styled-components';
+import React, { FC } from 'react';
 
-export const SectionTitle: any = styled.div`
-  font-size: ${props => props.theme.fontSize.big};
-  text-transform: ${(props: any) => (props.uppercase ? 'uppercase' : 'normal')};
-  text-align: center;
-  color: ${props => props.theme.colors.white};
-  direction: ${props => props.direction};
-  position: relative;
-  padding: 2rem 0 0;
-  margin-bottom: 2rem;
-  &:after {
-    content: '';
-    height: 1px;
-    width: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -25px;
-    background: ${props => props.theme.colors.white};
-  }
-`;
+interface ISectionTitle {
+  uppercase?: 'uppercase' | 'normal';
+  direction?: 'rtl' | 'ltr';
+}
+
+const SectionTitle: FC<ISectionTitle> = ({ children, uppercase, direction = 'ltr' }) => {
+  return (
+    <div style={{ direction }} className={`relative pt-4 mb-4 text-center text-5xl text-white lineBelow ${uppercase}`}>
+      {children}
+    </div>
+  );
+};
+
+export { SectionTitle };
