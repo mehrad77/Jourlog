@@ -3,7 +3,8 @@ import Frontmatter from './Frontmatter';
 interface Post {
   id: number;
   excerpt: string;
-  html: string;
+  html?: string;
+  htmlAst?: string;
   frontmatter: Frontmatter;
   fields: {
     slug: string;
