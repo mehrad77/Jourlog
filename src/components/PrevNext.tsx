@@ -10,7 +10,7 @@ interface IPrevNext {
 
 const PrevNext: FC<IPrevNext> = ({ prev, next }) => {
   return (
-    <div style={{ direction: 'ltr' }} className="flex mt-24 mb-4 mx-auto justify-center">
+    <div style={{ direction: 'ltr' }} className="flex w-full mt-24 mb-4 mx-auto justify-center">
       {prev && (
         <div>
           <span className="uppercase text-sm text-gray-700 font-bold">Previous</span>
