@@ -13,7 +13,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-semibold mb-4 mt-8;
+  @apply font-semibold mb-4 text-gray-900;
 }
 
 h1 {
@@ -58,13 +58,6 @@ li {
 
 .fa li {
   list-style: persian;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  @apply text-gray-900;
 }
 
 blockquote {

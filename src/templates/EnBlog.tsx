@@ -13,7 +13,7 @@ interface Props {
   };
 }
 
-export default class BlogPage extends React.Component<Props> {
+export default class EnBlogPage extends React.Component<Props> {
   public render() {
     const { currentPage, totalPages } = this.props.pageContext;
 
@@ -22,9 +22,9 @@ export default class BlogPage extends React.Component<Props> {
 
     return (
       <Layout>
-        <Helmet title={`Blog | ${config.siteTitle}`} />
+        <Helmet title={`Blog | ${config.siteTitle.en}`} />
         <Header>
-          <Link to="/">{config.siteTitle}</Link>
+          <Link to="/">{config.siteTitle.en}</Link>
           <SectionTitle uppercase="uppercase">Latest stories ({totalCount})</SectionTitle>
         </Header>
         <Wrapper>
@@ -37,11 +37,12 @@ export default class BlogPage extends React.Component<Props> {
                 timeToRead={post.node.timeToRead}
                 slug={post.node.fields.slug}
                 category={post.node.frontmatter.category}
+                banner={post.node.frontmatter.banner}
                 key={post.node.fields.slug}
                 direction={post.node.frontmatter.dir}
               />
             ))}
-            <Pagination currentPage={currentPage} totalPages={totalPages} url={'blog'} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} url={'en-blog'} />
           </Content>
         </Wrapper>
       </Layout>
@@ -54,7 +55,7 @@ export const BlogQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
-      filter: { fields: { draft: { eq: false } } }
+      filter: { fields: { draft: { eq: false } }, frontmatter: { dir: { eq: "ltr" } } }
     ) {
       totalCount
       edges {

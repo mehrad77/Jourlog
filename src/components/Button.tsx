@@ -5,7 +5,7 @@ interface IButton {
 }
 
 const Button: FC<IButton> = ({ children, variant = 'primary' }) => {
-  return <button className={`btn btn-${variant}`}>{children}</button>;
+  return <button className={`btn btn-${variant} `}>{children}</button>;
 };
 
 export { Button };

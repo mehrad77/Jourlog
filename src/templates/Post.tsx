@@ -51,9 +51,9 @@ export default class PostPage extends React.PureComponent<Props> {
         {post ? (
           <>
             <SEO postPath={slug} postNode={post} postSEO />
-            <Helmet title={`${title} | ${config.siteTitle}`} />
+            <Helmet title={`${title} | ${post.frontmatter.dir === 'ltr' ? config.siteTitle.en : config.siteTitle.fa}`} />
             <Header banner={post.frontmatter.banner}>
-              <Link to="/">{config.siteTitle}</Link>
+              <Link to="/">{post.frontmatter.dir === 'ltr' ? config.siteTitle.en : config.siteTitle.fa}</Link>
               <SectionTitle direction={post.frontmatter.dir}>{title}</SectionTitle>
               <Subline>
                 {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}

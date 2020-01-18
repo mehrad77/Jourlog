@@ -13,7 +13,7 @@ export default class AllTagTemplate extends React.PureComponent<PageProps> {
     if (tags) {
       return (
         <Layout>
-          <Helmet title={`Tags | ${config.siteTitle}`} />
+          <Helmet title={`Tags | ${config.siteTitle.en}`} />
           <Header>
             <Link to="/">{config.siteTitle}</Link>
             <SectionTitle>Tags</SectionTitle>

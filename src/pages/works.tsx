@@ -17,9 +17,9 @@ const WorksPage: FC<PageProps> = () => {
   const data: IWork[] = require('../../static/works.json');
   return (
     <Layout>
-      <Helmet title={`Contact | ${config.siteTitle}`} />
+      <Helmet title={`Contact | ${config.siteTitle.en}`} />
       <Header banner={'/assets/bg/1.jpg'}>
-        <Link to="/">{config.siteTitle}</Link>
+        <Link to="/">{config.siteTitle.en}</Link>
         <SectionTitle>Mehrad's Works</SectionTitle>
       </Header>
       <Wrapper>

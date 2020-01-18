@@ -89,14 +89,23 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
   });
 };
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const postTemplate = path.resolve(`src/templates/Post.tsx`);
+  const postEnTemplate = path.resolve(`src/templates/Post.tsx`);
+  const postFaTemplate = path.resolve(`src/templates/Post.tsx`);
 
-  return graphql(`
+  const blogEnTemplate = path.resolve(`src/templates/EnBlog.tsx`);
+  const blogFaTemplate = path.resolve(`src/templates/FaBlog.tsx`);
+
+  const outEn = await graphql(`
     {
-      allMarkdownRemark(filter: { fields: { draft: { eq: false } } }, sort: { order: DESC, fields: [frontmatter___date] }, limit: 10000) {
+      allMarkdownRemark(
+        filter: { fields: { draft: { eq: false } }, frontmatter: { dir: { eq: "ltr" } } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 10000
+      ) {
+        totalCount
         edges {
           node {
             excerpt(pruneLength: 250)
@@ -120,6 +129,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then(result => {
+    console.log({ enc: result.data.allMarkdownRemark.totalCount });
     if (result.errors) {
       return Promise.reject(result.errors);
     }
@@ -129,8 +139,8 @@ exports.createPages = ({ actions, graphql }) => {
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-        component: path.resolve('./src/templates/Blog.tsx'),
+        path: i === 0 ? `/en-blog` : `/en-blog/${i + 1}`,
+        component: blogEnTemplate,
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
@@ -148,7 +158,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       createPage({
         path: `/blog/${_.kebabCase(node.frontmatter.title)}`,
-        component: postTemplate,
+        component: postEnTemplate,
         context: {
           slug: _.kebabCase(node.frontmatter.title),
           prev,
@@ -157,4 +167,76 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
   });
+
+  const outFa = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fields: { draft: { eq: false } }, frontmatter: { dir: { eq: "rtl" } } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 10000
+      ) {
+        totalCount
+        edges {
+          node {
+            excerpt(pruneLength: 250)
+            html
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              date
+              title
+              category
+              dir
+              tags
+              banner
+              excerpt
+            }
+            timeToRead
+          }
+        }
+      }
+    }
+  `).then(result => {
+    console.log({ fac: result.data.allMarkdownRemark.totalCount });
+    if (result.errors) {
+      return Promise.reject(result.errors);
+    }
+    const posts = result.data.allMarkdownRemark.edges;
+    const postsPerPage = config.POST_PER_PAGE;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/fa-blog` : `/fa-blog/${i + 1}`,
+        component: blogFaTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          totalPages: numPages,
+          currentPage: i + 1,
+        },
+      });
+    });
+
+    createClassificationPages({ createPage, posts, postsPerPage, numPages });
+
+    posts.forEach(({ node }, index) => {
+      const next = index === 0 ? null : posts[index - 1].node;
+      const prev = index === posts.length - 1 ? null : posts[index + 1].node;
+
+      createPage({
+        path: `/blog/${_.kebabCase(node.frontmatter.title)}`,
+        component: postFaTemplate,
+        context: {
+          slug: _.kebabCase(node.frontmatter.title),
+          prev,
+          next,
+        },
+      });
+    });
+  });
+
+  return outEn;
 };
