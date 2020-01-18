@@ -21,12 +21,15 @@ const HeaderWrapper = styled.header<{ banner: string }>`
 interface IHeader {
   children: any;
   banner?: string;
+  direction?: 'rtl' | 'ltr';
 }
 
-const Header: FC<IHeader> = ({ children, banner }) => {
+const Header: FC<IHeader> = ({ children, banner, direction = 'ltr' }) => {
   return (
     <HeaderWrapper className="bg-cover text-center relative pt-16 pb-24 lg:max-w-8xl lg:mx-auto" banner={banner || config.defaultBg}>
-      <div className="Content">{children}</div>
+      <div style={{ direction }} className="Content">
+        {children}
+      </div>
     </HeaderWrapper>
   );
 };

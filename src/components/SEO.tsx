@@ -23,7 +23,7 @@ const SEO: FC<ISEO> = ({ postNode, postPath, postSEO }) => {
     image = config.siteBanner;
     postURL = config.siteUrl + realPrefix + postPath;
   } else {
-    title = config.siteTitle;
+    title = config.siteTitle.en;
     description = config.siteDescription;
     image = config.siteBanner;
   }
@@ -81,7 +81,7 @@ const SEO: FC<ISEO> = ({ postNode, postPath, postSEO }) => {
   return (
     <Helmet>
       <html lang={config.siteLanguage} />
-      <title>{config.siteTitle}</title>
+      <title>{config.siteTitle.en}</title>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>

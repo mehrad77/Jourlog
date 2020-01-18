@@ -9,9 +9,9 @@ interface IWork {
 
 const Work: FC<IWork> = ({ image = 'http://placehold.it/250x250.jpg', link, title, description }) => {
   return (
-    <div className="block flex flex-row w-full mb-8 bg-backWhite-opaque rounded-md overflow-hidden shadow-md">
-      <img className="w-3/12 relative object-cover" src={image} />
-      <figcaption className="w-9/12 py-2 px-4">
+    <div className="block flex flex-col md:flex-row w-full mb-8 bg-backWhite-opaque rounded-md overflow-hidden shadow-md">
+      <img className="w-full md:w-3/12 relative object-cover" src={image} />
+      <figcaption className="w-full md:w-9/12 py-2 px-4">
         <h3 className="text-2xl text-foreText-heading">{title}</h3>
         <p className="text-foreText-paragraph text-sm">{description}</p>
         <a

@@ -4,6 +4,7 @@ import { Layout, Article, Wrapper, SectionTitle, Header, Content, Pagination } f
 import Helmet from 'react-helmet';
 import config from '../../config/SiteConfig';
 import Data from '../models/Data';
+import { toFarsiNumber } from '../utils/persianUtils';
 
 interface Props {
   data: Data;
@@ -13,7 +14,7 @@ interface Props {
   };
 }
 
-export default class BlogPage extends React.Component<Props> {
+export default class EnBlogPage extends React.Component<Props> {
   public render() {
     const { currentPage, totalPages } = this.props.pageContext;
 
@@ -22,10 +23,11 @@ export default class BlogPage extends React.Component<Props> {
 
     return (
       <Layout>
-        <Helmet title={`Blog | ${config.siteTitle}`} />
-        <Header>
-          <Link to="/">{config.siteTitle}</Link>
-          <SectionTitle uppercase="uppercase">Latest stories ({totalCount})</SectionTitle>
+        <Helmet title={`بلاگ | ${config.siteTitle.fa}`} />
+        <Header direction="rtl">
+          <Link to="/">{config.siteTitle.fa}</Link>
+          <SectionTitle uppercase="uppercase">آخرین نوشته‌ها</SectionTitle>
+          <span className="text-white">{toFarsiNumber(totalCount)} نوشته</span>
         </Header>
         <Wrapper>
           <Content>
@@ -37,11 +39,12 @@ export default class BlogPage extends React.Component<Props> {
                 timeToRead={post.node.timeToRead}
                 slug={post.node.fields.slug}
                 category={post.node.frontmatter.category}
+                banner={post.node.frontmatter.banner}
                 key={post.node.fields.slug}
-                direction={post.node.frontmatter.dir}
+                direction={'rtl'}
               />
             ))}
-            <Pagination currentPage={currentPage} totalPages={totalPages} url={'blog'} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} url={'fa-blog'} />
           </Content>
         </Wrapper>
       </Layout>
@@ -54,7 +57,7 @@ export const BlogQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
-      filter: { fields: { draft: { eq: false } } }
+      filter: { fields: { draft: { eq: false } }, frontmatter: { dir: { eq: "rtl" } } }
     ) {
       totalCount
       edges {
@@ -67,6 +70,7 @@ export const BlogQuery = graphql`
             date(formatString: "DD.MM.YYYY")
             category
             dir
+            banner
             excerpt
           }
           excerpt(pruneLength: 200)

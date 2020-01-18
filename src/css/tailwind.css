@@ -4,7 +4,40 @@
 /* == == == general styles == == ==  */
 html,
 body {
-  @apply font-body;
+  @apply font-body overflow-x-hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold mb-4 text-gray-900;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+h5 {
+  @apply text-base font-bold;
+}
+
+p {
+  @apply mb-4;
 }
 
 a {
@@ -15,27 +48,51 @@ a:hover {
   @apply text-blue-500;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  @apply text-gray-900;
+ul {
+  @apply flex flex-col justify-center mb-4;
+}
+
+li {
+  @apply list-decimal;
+}
+
+.fa li {
+  list-style: persian;
 }
 
 blockquote {
-  @apply italic relative;
+  @apply relative my-8 mx-4 pb-4 px-4 pt-8 italic bg-gray-800 bg-backWhite-opaque shadow border-l-8 border-primary-700;
+  line-height: 1.6;
 }
 
-blockquote:before {
-  @apply absolute h-full -ml-6;
+blockquote::before {
+  @apply absolute text-6xl;
+  font-family: Arial;
+  content: '\201C';
+  color: #78c0a8;
+  left: 10px;
+  top: -10px;
+}
+
+blockquote::after {
   content: '';
-  background: #72cc96;
-  width: 6px;
+}
+
+blockquote span {
+  @apply block mt-4;
+  color: #333333;
+  font-style: normal;
+  font-weight: bold;
+}
+
+blockquote p {
+  @apply m-0;
 }
 
 label {
   @apply text-gray-900 mb-2;
 }
+
 input,
 textarea {
   border-radius: 0.5rem;

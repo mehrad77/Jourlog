@@ -1,4 +1,5 @@
 import React from 'react';
+import rehypeReact from 'rehype-react';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -9,6 +10,7 @@ import config from '../../config/SiteConfig';
 import '../utils/prismjs-theme.css';
 import PathContext from '../models/PathContext';
 import Post from '../models/Post';
+import Logo from '../components/Logo';
 
 const PostContent = styled.div`
   margin-top: 4rem;
@@ -23,6 +25,11 @@ interface Props {
 
 export default class PostPage extends React.PureComponent<Props> {
   public render() {
+    const renderAst = new rehypeReact({
+      createElement: React.createElement,
+      components: { logo: Logo },
+    }).Compiler;
+
     const { prev, next } = this.props.pathContext;
     const post = this.props.data.markdownRemark;
     const slug = post.fields.slug;
@@ -44,9 +51,9 @@ export default class PostPage extends React.PureComponent<Props> {
         {post ? (
           <>
             <SEO postPath={slug} postNode={post} postSEO />
-            <Helmet title={`${title} | ${config.siteTitle}`} />
+            <Helmet title={`${title} | ${post.frontmatter.dir === 'ltr' ? config.siteTitle.en : config.siteTitle.fa}`} />
             <Header banner={post.frontmatter.banner}>
-              <Link to="/">{config.siteTitle}</Link>
+              <Link to="/">{post.frontmatter.dir === 'ltr' ? config.siteTitle.en : config.siteTitle.fa}</Link>
               <SectionTitle direction={post.frontmatter.dir}>{title}</SectionTitle>
               <Subline>
                 {post.frontmatter.date} &mdash; {post.timeToRead} Min Read &mdash; In{' '}
@@ -55,7 +62,7 @@ export default class PostPage extends React.PureComponent<Props> {
             </Header>
             <Wrapper>
               <Content direction={post.frontmatter.dir}>
-                <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+                <PostContent>{renderAst(post.htmlAst)}</PostContent>
                 {post.frontmatter.tags ? (
                   <div>
                     Tags: &#160;
@@ -80,7 +87,7 @@ export default class PostPage extends React.PureComponent<Props> {
 export const postQuery = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      htmlAst
       fields {
         slug
       }

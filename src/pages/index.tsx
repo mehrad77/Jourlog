@@ -40,7 +40,7 @@ const GridRow: any = styled.div`
 `;
 
 const HomepageContent: any = styled.div`
-  max-width: 30rem;
+  max-width: ${(props: any) => (props.hasMaxWidth ? '30rem' : 'left')};
   text-align: ${(props: any) => (props.center ? 'center' : 'left')};
 `;
 
@@ -51,13 +51,15 @@ export default class IndexPage extends React.Component<PageProps> {
     return (
       <Layout>
         <Wrapper fullWidth>
-          <Helmet title={`Homepage | ${config.siteTitle}`} />
-          <div className="flex h-full flex-col lg:flex-row">
+          <Helmet title={`Homepage | ${config.siteTitle.en}`} />
+          <div className="flex h-full flex-col">
             <GridRow background={true}>
               <HomepageContent center={true}>
                 {/* <img src={config.siteLogo} /> */}
                 <Logo />
-                <p>I'm Mehrad Rousta and I write about Life, Web Development, Podcasts, Music, Language, Inde Culture and other stuff.</p>
+                <p className="w-full md:w-2/4 mx-auto">
+                  I'm Mehrad Rousta and I write about Life, Web Development, Podcasts, Music, Language, Inde Culture and other stuff.
+                </p>
                 <Link to="/works">
                   <Button>My Works</Button>
                 </Link>
@@ -67,27 +69,32 @@ export default class IndexPage extends React.Component<PageProps> {
               </HomepageContent>
             </GridRow>
             <GridRow>
-              <HomepageContent>
-                <h2 className="text-3xl text-foreText-heading text-center">Latest Blog</h2>
+              <HomepageContent hasMaxWidth={false}>
+                <h2 className="text-3xl text-foreText-heading text-center">Latest Blog | آخرین‌نوشته‌ها </h2>
                 <hr />
-                {edges.map(post => (
-                  <Article
-                    title={post.node.frontmatter.title}
-                    date={post.node.frontmatter.date}
-                    direction={post.node.frontmatter.dir}
-                    excerpt={post.node.frontmatter.excerpt ? post.node.frontmatter.excerpt : post.node.excerpt}
-                    timeToRead={post.node.timeToRead}
-                    slug={post.node.fields.slug}
-                    category={post.node.frontmatter.category}
-                    key={post.node.fields.slug}
-                  />
-                ))}
+                <div className="flex flex-col md:flex-row flex-wrap justify-center">
+                  {edges.map(post => (
+                    <Article
+                      className=" md:w-4/12 ml-4 mr-4 "
+                      removeWC
+                      title={post.node.frontmatter.title}
+                      date={post.node.frontmatter.date}
+                      direction={post.node.frontmatter.dir}
+                      excerpt={post.node.frontmatter.excerpt ? post.node.frontmatter.excerpt : post.node.excerpt}
+                      timeToRead={post.node.timeToRead}
+                      slug={post.node.fields.slug}
+                      category={post.node.frontmatter.category}
+                      banner={post.node.frontmatter.banner}
+                      key={post.node.fields.slug}
+                    />
+                  ))}
+                </div>
                 <div className="flex flex-row justify-center">
-                  <Link className="text-sm" to={'/categories/english-posts'}>
-                    <Button>English Posts</Button>
-                  </Link>{' '}
+                  <Link className="text-sm" to={'/en-blog'}>
+                    <Button>English Blog</Button>
+                  </Link>
                   <br />
-                  <Link className="text-sm" to={'/categories/farsi-posts'}>
+                  <Link className="text-sm" to={'/fa-blog'}>
                     <Button>نوشته‌های فارسی</Button>
                   </Link>
                 </div>
@@ -101,7 +108,7 @@ export default class IndexPage extends React.Component<PageProps> {
 }
 export const IndexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 2, filter: { fields: { draft: { eq: false } } }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 4, filter: { fields: { draft: { eq: false } } }) {
       totalCount
       edges {
         node {
