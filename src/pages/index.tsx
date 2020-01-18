@@ -60,11 +60,15 @@ export default class IndexPage extends React.Component<PageProps> {
                 <p className="w-full md:w-2/4 mx-auto">
                   I'm Mehrad Rousta and I write about Life, Web Development, Podcasts, Music, Language, Inde Culture and other stuff.
                 </p>
-                <Link to="/works">
-                  <Button>My Works</Button>
+
+                <Link to="/en-blog">
+                  <Button>English Blog</Button>
                 </Link>
-                <Link to="/blog">
-                  <Button>Blog</Button>
+                <Link to="/works">
+                  <Button>Works</Button>
+                </Link>
+                <Link to="/fa-blog">
+                  <Button>Persin Blog</Button>
                 </Link>
               </HomepageContent>
             </GridRow>

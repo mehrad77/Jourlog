@@ -61,7 +61,7 @@ export default class PostPage extends React.PureComponent<Props> {
               </Subline>
             </Header>
             <Wrapper>
-              <Content direction={post.frontmatter.dir}>
+              <Content col={true} direction={post.frontmatter.dir}>
                 <PostContent>{renderAst(post.htmlAst)}</PostContent>
                 {post.frontmatter.tags ? (
                   <div>
