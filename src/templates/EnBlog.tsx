@@ -39,7 +39,7 @@ export default class EnBlogPage extends React.Component<Props> {
                 category={post.node.frontmatter.category}
                 banner={post.node.frontmatter.banner}
                 key={post.node.fields.slug}
-                direction={post.node.frontmatter.dir}
+                direction={'ltr'}
               />
             ))}
             <Pagination currentPage={currentPage} totalPages={totalPages} url={'en-blog'} />

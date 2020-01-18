@@ -34,6 +34,7 @@ export default class Category extends React.PureComponent<PageProps> {
                     slug={kebabCase(post.frontmatter.title)}
                     timeToRead={post.timeToRead}
                     category={post.frontmatter.category}
+                    banner={post.frontmatter.banner}
                     key={index}
                   />
                 ))
