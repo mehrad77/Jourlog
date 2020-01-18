@@ -56,13 +56,14 @@ module.exports = {
           'gatsby-remark-prismjs',
           'gatsby-remark-autolink-headers',
           'gatsby-remark-component',
+          'gatsby-remark-embedder',
         ],
       },
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.siteTitle,
+        name: config.siteTitle.en,
         short_name: config.siteTitleAlt,
         description: config.siteDescription,
         start_url: config.pathPrefix,

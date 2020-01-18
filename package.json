@@ -35,6 +35,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "babel-preset-gatsby": "^0.2.27",
     "gatsby-remark-component": "^1.1.3",
+    "gatsby-remark-embedder": "^1.7.0",
     "gh-pages": "^2.2.0",
     "husky": "^4.0.7",
     "identity-obj-proxy": "^3.0.0",
