@@ -1,6 +1,6 @@
 ---
 title: Hello my old firend
-date: 2020-01-20T10:37:13.797Z
+date: '2020-01-06'
 layout: blog
 dir: ltr
 category: English Posts
