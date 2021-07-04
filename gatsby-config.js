@@ -1,87 +1,88 @@
-require('source-map-support').install();
-require('ts-node').register({
-  compilerOptions: {
-    module: 'commonjs',
-    target: 'es2017',
-  },
-});
-
-const config = require('./config/SiteConfig').default;
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
-
 module.exports = {
-  pathPrefix: config.pathPrefix,
+  pathPrefix: "/",
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
+    title: `Jourlog`,
+    author: {
+      name: `@mehrad4u`,
+      summary: `I've got the right to make my own fresh mistakes and repeating fuck ups of the fathers.`,
+    },
+    description: `Where I log my life.`,
+    siteUrl: `https://jourlog.xyz`,
+    social: {
+      twitter: `mehrad4u`,
+    },
+    defaultImage: "images/bg.jpeg",
   },
   plugins: [
-    'gatsby-plugin-netlify-cms',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-offline',
-    'gatsby-plugin-draft',
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-sass',
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-manifest',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-sitemap',
-    'gatsby-plugin-lodash',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'post',
-        path: `${__dirname}/blog`,
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
-      resolve: `gatsby-plugin-google-tagmanager`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        id: config.Google_Tag_Manager_ID,
-        // Include GTM in development.
-        // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-external-links',
+            resolve: `gatsby-remark-images`,
             options: {
-              target: '_blank',
-              rel: 'nofollow noopener noreferrer',
+              maxWidth: 590,
             },
           },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-autolink-headers',
-          'gatsby-remark-component',
-          'gatsby-remark-embedder',
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
         ],
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        name: config.siteTitle.en,
-        short_name: config.siteTitleAlt,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: 'standalone',
-        icon: config.favicon,
+        id: 'GTM-WX3HH87',
+        includeInDevelopment: false,
       },
     },
+    `gatsby-plugin-feed`,
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        custom: {
-          families: ['Shabnam'],
-          urls: ['/fonts/fonts.css'],
-        },
+        name: `Mehrad Rousta`,
+        short_name: `Jourlog`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#4fc4cf`,
+        display: `minimal-ui`,
+        icon: `content/assets/icon.png`,
       },
     },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-offline`,
+    "gatsby-plugin-dark-mode",
+    `gatsby-plugin-postcss`,
   ],
-};
+}
