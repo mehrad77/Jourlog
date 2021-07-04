@@ -1,8 +1,15 @@
 module.exports = {
   plugins: {
-    'postcss-nested': {},
-    tailwindcss: 'tailwind.config.js',
-    // '@fullhuman/postcss-purgecss': process.env.NODE_ENV === 'production',
-    autoprefixer: {},
+    "postcss-import": {},
+    "tailwindcss": {},
+    "postcss-preset-env": {
+      autoprefixer: {
+        flexbox: "no-2009",
+      },
+      stage: 3,
+      features: {
+        "nesting-rules": true,
+      },
+    },
   },
 };
