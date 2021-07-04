@@ -15,7 +15,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     <Layout 
       location={location}
       title="Home"
-      topContent={post.frontmatter.banner && <img id="post-image" className="w-full -mb-64" src={post.frontmatter.banner} alt="" />}
+      topContent={post.frontmatter.banner && <img id="post-image" className="w-full -mb-64 max-h-700px" src={post.frontmatter.banner} alt="" />}
     >
       <SEO
         title={post.frontmatter.title}
