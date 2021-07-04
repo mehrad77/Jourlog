@@ -23,6 +23,7 @@ type Data = {
           title: string
           date: string
           description: string
+          dir: 'rtl' | 'ltr'
         }
         fields: {
           slug: string
@@ -52,7 +53,7 @@ const BlogIndex = ({
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
+          <article key={node.fields.slug} style={{direction: node.frontmatter.dir}}>
             <header>
               <h3
                 style={{
@@ -68,7 +69,7 @@ const BlogIndex = ({
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.description,
                 }}
               />
             </section>
@@ -116,6 +117,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
+      filter: { frontmatter: { draft: { eq: false } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
@@ -130,6 +132,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            dir
           }
         }
       }

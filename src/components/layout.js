@@ -6,7 +6,7 @@ import { scale } from "../utils/typography"
 import Footer from "./footer"
 import "./global.css"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, topContent, title, children }) => {
   const toggle = (
     <ThemeToggler>
       {({ toggleTheme, theme }) => {
@@ -63,8 +63,7 @@ const Layout = ({ location, title, children }) => {
         style={{
           ...scale(1),
           marginBottom: 0,
-          marginTop: 0,
-          fontFamily: `Montserrat, sans-serif`,
+          marginTop: 0
         }}
       >
         <Link
@@ -99,6 +98,7 @@ const Layout = ({ location, title, children }) => {
       </div>
 
       <div className="main-content relative">
+        {topContent}
         <main>{children}</main>
         <Footer />
       </div>

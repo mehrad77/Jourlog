@@ -12,18 +12,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title="Home">
+    <Layout 
+      location={location}
+      title="Home"
+      topContent={post.frontmatter.banner && <img id="post-image" className="w-full -mb-64" src={post.frontmatter.banner} alt="" />}
+    >
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
-          <h1
-            style={{
-              marginBottom: 0,
-            }}
-          >
+        <header className="text-center" style={{ direction: post.frontmatter.dir}}>
+          <h1 className="mb-0 text-5xl">
             {post.frontmatter.title}
           </h1>
           <p
@@ -36,7 +36,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section 
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          style={{direction: post.frontmatter.dir}}
+        />
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -91,9 +94,11 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        banner
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        dir
       }
     }
   }
