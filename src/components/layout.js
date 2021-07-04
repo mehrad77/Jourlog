@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
+import Logo from "./Logo";
 import { scale } from "../utils/typography"
 
 import Footer from "./footer"
@@ -73,7 +74,7 @@ const Layout = ({ location, topContent, title, children }) => {
           }}
           to={`/`}
         >
-          {title}
+          <Logo /> 
         </Link>
       </h2>
     </>

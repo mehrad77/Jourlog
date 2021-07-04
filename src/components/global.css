@@ -89,7 +89,7 @@ button {
 .main-content {
   background-color: var(--bg);
   position: absolute;
-  top: 124px;
+  top: 200px;
   z-index: 10;
   margin-left: 0;
 }
@@ -127,4 +127,70 @@ button {
   @apply pointer-events-none;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
   mask-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 0, 0), rgba(0,0,0,0.4),rgba(0,0,0,0.3), rgba(0,0,0,0));
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: scale(0.98);
+    fill: #2797A1;
+  }
+  20% {
+    fill: #6BC9D2;
+    transform: scale(0.96);
+  }
+  40% {
+    fill: #6BC9D2;
+    transform: scale(0.99);
+  }
+  70% {
+    fill: #2797A1;
+    transform: scale(1.01);
+  }
+  100% {
+    fill: #088591;
+    transform: scale(1);
+  }
+}
+
+#jourlog-logo {
+  @apply w-full;
+}
+#jourlog-logo path {
+  animation: loading-spinner 10s cubic-bezier(0.79, 0.14, 0.15, 0.86) infinite;
+  transform-origin: center;
+}
+#jourlog-logo path:hover {
+  fill: gray;
+}
+#jourlog-logo .svgJDot {
+  transform-origin: center;
+  animation-delay: 0s;
+}
+#jourlog-logo .svgJ {
+  transform-origin: center;
+  animation-delay: -0.4s;
+}
+#jourlog-logo .svgO {
+  transform-origin: center;
+  animation-delay: -0.6s;
+}
+#jourlog-logo .svgU {
+  transform-origin: center;
+  animation-delay: -0.1s;
+}
+#jourlog-logo .svgR {
+  transform-origin: center;
+  animation-delay: -0.2s;
+}
+#jourlog-logo .svgL {
+  transform-origin: center;
+  animation-delay: -0.9s;
+}
+#jourlog-logo .svgO2 {
+  transform-origin: center;
+  animation-delay: -0.3s;
+}
+#jourlog-logo .svgG {
+  transform-origin: center;
+  animation-delay: -0.8s;
 }
