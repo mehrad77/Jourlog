@@ -1,4 +1,2 @@
 User-agent: *
 Disallow:
-
-sitemap: https://jourlog.xyz/sitemap.xml
