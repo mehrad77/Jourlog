@@ -37,19 +37,19 @@ const HomePageHero: VFC = () => {
   </div>);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between p-8 bg-gray-300">
+    <div className="flex flex-col md:flex-row justify-between p-8 bg-gray-300 dark:bg-gray-900">
       {/*  */}
       <div className="flex md:hidden items-center justify-center">
         {image}
       </div>
       {/*  */}
       <div className="flex flex-col w-full">
-        <div className="flex flex-row px-4 justify-between text-gray-700 w-full">
+        <div className="flex flex-row px-4 justify-between text-gray-700 dark:text-gray-300 w-full">
           <h1 className="m-0 my-2">{author.name}</h1>
           <h1 className="m-0 my-2" style={{ direction: 'rtl' }}>{author.name_fa}</h1>
         </div>
         <p className="px-8">
-          Yes, that's my name. But a name doesn't define anything. It is not even a unique identifier. It's something we carry with us through our life and we try to give meaning to it. (or do we?)
+          Yes, that's my name, but a name doesn't define anything. It is not even a unique identifier. It's something we carry with us through our life and we try to give meaning to it. (or do we?)
           <br /><br />
           I was born in Tehran. A Tehran ruled under Islamic Republic theocracy that many people try to escape from it to other countries for a better fortune and future.
           <br />
