@@ -6,7 +6,7 @@ import Footer from "./footer";
 import { scale } from "../utils/typography";
 import "./global.css";
 
-const Layout = ({ location, topContent, title, children }) => {
+const Layout = ({ topContent, children }) => {
   const header = (
     <>
       <ThemeSwitch />
