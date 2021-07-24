@@ -27,13 +27,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.title}
           </h1>
           <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
+           className="mt-4"
           >
-            {post.frontmatter.date}
+             {
+                post.frontmatter.dir === "rtl" ?
+                  new Date(post.frontmatter.date).toLocaleDateString('fa-IR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit'
+                  })
+                  : post.frontmatter.date
+                }
           </p>
         </header>
         <section 
