@@ -3,6 +3,7 @@ import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import HomePageHero from "../components/HomePageHero"
 import { rhythm } from "../utils/typography"
 
 type PageContext = {
@@ -35,10 +36,10 @@ type Data = {
 
 const BlogIndex = ({
   data,
-  location,
+  // location,
   pageContext,
 }: PageProps<Data, PageContext>) => {
-  const siteTitle = data.site.siteMetadata.title
+  // const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
   const { currentPage, numPages } = pageContext
 
@@ -48,12 +49,12 @@ const BlogIndex = ({
   const nextPage = `/${currentPage + 1}`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout topContent={isFirst? <HomePageHero /> : ''}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug} style={{direction: node.frontmatter.dir}}>
+          <article key={node.fields.slug} style={{ direction: node.frontmatter.dir }}>
             <header>
               <h3
                 style={{
@@ -64,7 +65,17 @@ const BlogIndex = ({
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>
+                {
+                  node.frontmatter.dir === "rtl" ?
+                    new Date(node.frontmatter.date).toLocaleDateString('fa-IR', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: '2-digit'
+                    })
+                    : node.frontmatter.date
+                }
+              </small>
             </header>
             <section>
               <p

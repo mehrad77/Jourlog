@@ -5,8 +5,6 @@ const Logo: VFC = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       id="jourlog-logo"
-    //   width="800"
-    //   height="160"
       viewBox="-30 -30 750 300"
       shape-rendering="geometricPrecision"
       text-rendering="geometricPrecision"
