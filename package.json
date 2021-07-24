@@ -18,8 +18,8 @@
     "prepare": "husky install"
   },
   "engines": {
-    "node": "14.4.0",
-    "yarn": "1.22.4"
+    "node": "^14.4.0",
+    "yarn": "^1.22.4"
   },
   "dependencies": {
     "gatsby": "^3.8.1",
