@@ -1,14 +1,14 @@
 @tailwind utilities;
 
 body {
-  --bg: #fff;
-  --lightBg: #f5f5f5;
+  --bg: #f4f4f4;
+  --lightBg: #e0e0e0;
   --textNormal: #181818;
   --textTitle: #181818;
   --textLink: #2797A1;
   --hr: hsla(0, 20%, 1%, 0.2);
 
-  background-color: var(--bg);
+  background-color: var(--lightBg);
   font-family: Shabnam;
 }
 
