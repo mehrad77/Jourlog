@@ -3,6 +3,7 @@ import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import HomePageHero from "../components/HomePageHero"
 import { rhythm } from "../utils/typography"
 
 type PageContext = {
@@ -48,7 +49,7 @@ const BlogIndex = ({
   const nextPage = `/${currentPage + 1}`
 
   return (
-    <Layout topContent={''} >
+    <Layout topContent={isFirst? <HomePageHero /> : ''}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
@@ -67,10 +68,10 @@ const BlogIndex = ({
               <small>
                 {
                   node.frontmatter.dir === "rtl" ?
-                    new Date(node.frontmatter.date).toLocaleDateString('fa-IR', { 
+                    new Date(node.frontmatter.date).toLocaleDateString('fa-IR', {
                       year: 'numeric',
                       month: 'long',
-                      day: '2-digit' 
+                      day: '2-digit'
                     })
                     : node.frontmatter.date
                 }

@@ -3,7 +3,8 @@ module.exports = {
   siteMetadata: {
     title: `Jourlog`,
     author: {
-      name: `@mehrad4u`,
+      name: `Mehrad Rousta`,
+      name_fa: `مهراد روستا`,
       summary: `I've got the right to make my own fresh mistakes and repeating fuck ups of the fathers.`,
     },
     description: `Where I log my life.`,
