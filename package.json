@@ -54,11 +54,11 @@
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
     "postcss-import": "^14.0.2",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "2.3.2",
-    "tailwindcss": "^2.2.4"
+    "postcss-preset-env": "^7.4.3",
+    "prettier": "2.6.0",
+    "tailwindcss": "^3.0.23"
   },
   "homepage": "https://github.com/mehrad77/Jourlog#readme",
   "keywords": [

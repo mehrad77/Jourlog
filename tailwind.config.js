@@ -1,6 +1,5 @@
 module.exports = {
-  mode: 'JIT',
-  purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
+  content: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
   darkMode: 'class',
   theme: {
     extend: {
@@ -9,6 +8,5 @@ module.exports = {
       }
     }
   },
-  variants: {},
   plugins: [],
 }
